@@ -54,6 +54,13 @@ var im = am.getInstanceManager();
 var vm = am.getVolumeManager();
 var sm =am.getSecurityManager();
 var nm = am.getNetworkManager();
+//generic api call
+var genericParams = {
+   "VolumeId":"ATTACHED_VOLUME_ID",
+  "InstanceId":"INSTANCE_ID_THE_VOLUME_ATTACHED_TO",
+  "Device":"/dev/xvdh"
+}
+am.callApi("DetachVolume",genericParams);
 // running an instance
 var runInstanceParams = {
   "ImageId":"AN_AWS_IMAGE_ID",
