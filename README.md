@@ -16,6 +16,8 @@ Amazon EC2’s simple web service interface allows you to obtain and configure c
 - aws/VolumeManager: This object can be used to create, delete, describe, attach, and describe the state of a volume, along with a method that schedules a script  aws/volumeStateChecker.
 - aws/volumeStateChecker: This script is a scheduled script that runs according to the stateCheckIntervalInSec variable defined in the config file that checks the state of the created volume, and inform the user via email when the volume reaches the desired state(available). Also the script will create tags, and subscribe another script.
 
+## Authentication:
+Scriptr will handle the authentication and signatures which are required to do any api call with aws so you won't have to worry about signature or authorization with aws.
 ## How to use
 - Use the Import Modules feature to deploy the aforementioned scripts in your scriptr account, in a folder named "modules/aws".
 - Create a developer account and an application at [aws](https://aws.amazon.com/ec2/).
@@ -43,3 +45,98 @@ createTags
 
 ```
 Once you create new instance of the AWSManager class, you can create other instances of other objects in this connector by simply calling ```getInstanceManager()``` to create an instance of InstanceManager, or by calling ```getNetworkManager()``` to create an instance of NetworkManager, or by calling ```getVolumeManager()``` to create an instance of VolumeManager, or by calling ```getSecurityManager()``` to create an instance of SecurityManager.
+```
+var config = require("aws/config");
+var awsManager = require("aws/AWSManager");
+var am = new awsManager.AWSManager(config);
+var im = am.getInstanceManager();
+var vm = am.getVolumeManager();
+var sm =am.getSecurityManager();
+var nm = am.getNetworkManager();
+var runInstanceParams = {
+  "ImageId":"ami-3444ed54",
+  "InstanceType":"t2.micro",
+  "Placement":{
+    "AvailabilityZone":config.availabilityZone
+  }
+}
+im.runInstance(runInstanceParams,[{"Key":"Name","Value":"batata"}],{"text":"test"});
+im.terminateInstance({"InstanceId":"i-0512128f7a73ef61f"});
+im.describeInstanceState({"InstanceId":"i-0444d5651ee59360d"});
+
+nm.deleteSubnet({"SubnetId":"subnet-bf4f5dc9"});
+nm.describeSubnet({"SubnetId":"subnet-bf4f5dc9"});
+nm.describeVpc({"VpcId":"vpc-7a9f471d"});
+var subnetParams = {
+   "CidrBlock": "10.0.0.0/16",
+  	"VpcId": "vpc-7a9f471d"
+};
+nm.createSubnet(subnetParams,[{"Key":"Name","Value":"batata"}]);
+var vpcParams = {
+  "CidrBlock": "10.0.0.0/16"
+}
+nm.createVpc(vpcParams,[{"Key":"Name","Value":"batata"}]);
+nm.deleteVpc({"VpcId": "vpc-e19d4586"});
+
+var params = {
+  "GroupName":"testGroup1",
+ "GroupDescription":"this is another testing group"
+};
+
+var ingressParams = {
+  "GroupName":"testGroup",
+  "IpPermissions":[
+   {"IpProtocol":"tcp",
+    "FromPort":"2376",
+    "ToPort":"2376",
+    "IpRanges":[
+      {"CidrIp":"0.0.0.0/0" 
+      }
+    ]
+   },{
+    "IpProtocol":"tcp",
+    "FromPort":"22",
+    "ToPort":"22",
+    "IpRanges":[
+      {"CidrIp":"0.0.0.0/0" 
+      }
+    ]
+   }
+  ],
+}
+sm.deleteSecurityGroup({"GroupName":"testGroup1"});
+sm.createSecurityGroup(params,null,null,tagParams);
+sm.describeSecurityGroup({"GroupName":"testGroup"});
+
+var params = {
+  "GroupName":"testGroup",
+  "GroupDescription":"this is a testing group"
+}
+
+
+
+var ingressParams = {
+  "GroupName":"testGroup",
+  "IpPermissions":[
+   {"IpProtocol":"tcp",
+    "FromPort":"2376",
+    "ToPort":"2376",
+    "IpRanges":[
+      {"CidrIp":"0.0.0.0/0" 
+      }
+    ]
+   },{
+    "IpProtocol":"tcp",
+    "FromPort":"22",
+    "ToPort":"22",
+    "IpRanges":[
+      {"CidrIp":"0.0.0.0/0" 
+      }
+    ]
+   }
+  ],
+}
+sm.createSecurityGroup(params,ingressParams);
+sm.deleteSecurityGroup({"GroupName":"testGroup"})
+sm.authorizeSecurityGroupIngress(params);
+```
