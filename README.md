@@ -20,8 +20,6 @@
 
 - mojio/tripManager : This object has methods that get a specific trip ```getTrip()```, get all trips ```getAllTrips()```, update an existing trip ```updateTrip()```, and delete an existing trip ```deleteTrip()```.
 
-- mojio/tripManager : This object has methods that get a specific trip ```getTrip()```, get all trips ```getAllTrips()```, update an existing trip ```updateTrip()```, and delete an existing trip ```deleteTrip()```.
-
 - mojio/appManager : This object has method that get the app information ```getApps()```.
 
 - mojio/activityStreams : This object has method that get all activities related to resources of this type ```getActivities()```.
