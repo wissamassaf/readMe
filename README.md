@@ -16,7 +16,7 @@
 
 - mojio/userManager : This object has methods that gets current user details ```getMyDetails()```, get a specific user ```getUserDetails()```, update an existing user. ```updateUser()```, get all users ```GetAllUsers()```, get et all vehicles the user owns ```GetUserVehicles()```, get all mojios the user owns ```getUserMojios()```, get all trips the user owns ```getUserTrips()```, get all groups the user owns ```getUserGroups()```, get all of a user's phone numbers ```getUserPhoneNumbers()```, add a phone number to a user ```addPhoneNumber()```, get a user's phone number details ```getUserPhoneNumberDetails()```, create or update a phone number on a user ```updateUserPhoneNumber()```, delete a phone number from a user ```deleteUserPhoneNumber()```, get all of a user's emails ```getUserEmails()```, add an email to a user ```addUserEmail()```, get a user's email details ```getUserEmail()```, create or update a user's email ```updateUserEmail()```, and delete an email from a user ```deleteUserEmail()```.
 
-- mojio/geofenceManager : This object has methods that create a new geofence ```createGeofence()```, all geofences accessible to the current user ```getAllGeofences()```, get an individual geofence's details ```getGeofence()```, delete an existing geofence ```deleteGeofence()```, and update an existing geofence ```updateGeofence()```.
+- mojio/geofenceManager : This object has methods that create a new geofence ```createGeofence()```,get all geofences accessible to the current user ```getAllGeofences()```, get an individual geofence's details ```getGeofence()```, delete an existing geofence ```deleteGeofence()```, and update an existing geofence ```updateGeofence()```.
 
 - mojio/tripManager : This object has methods that get a specific trip ```getTrip()```, get all trips ```getAllTrips()```, update an existing trip ```updateTrip()```, and delete an existing trip ```deleteTrip()```.
 
@@ -27,7 +27,7 @@
 ### How To Use
 - Deploy the aforementioned scripts in your scriptr account, in a folder named "mojio",
 - Create a developer account and an application at [mojio](https://www.moj.io/developer/),
-- Once done, make sure to copy/paste the values of your application Key and application secret in the corresponding variables of the "mojio/config file" (respectively client_id and client_secret). Also replace"YOUR_AUTH_TOKEN" with your actual scriptr.io auth token in the "redirect_uri" variable.
+- Once done, make sure to copy/paste the values of your application Key and application secret in the corresponding variables of the "mojio/config" file (respectively client_id and client_secret). Also replace"YOUR_AUTH_TOKEN" with your actual scriptr.io auth token in the "redirect_uri" variable.
 - Create an end user (driver) account (https://accounts.moj.io/account/signin/mojio).
 - Create a test script in scriptr, or use the script provided in mojio/test/. 
 
