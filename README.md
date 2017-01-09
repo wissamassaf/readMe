@@ -1,4 +1,4 @@
-## About Amazon EC2
+## About Mojio
 
 [Mojio](https://www.moj.io/developer/) gives you access to a great deal of data about the driver and their vehicle to create apps and services to improve the end user experience.
 
