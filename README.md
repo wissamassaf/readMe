@@ -61,6 +61,7 @@ Once this is done, xee automatically calls back the ```mojio/getAccessToken``` s
 In order to use the connector, you need to import mojio module.
 
 Then create a new instance of the classes, defined in this module (we assume that we already otbained an access token for the given user) example:
+
 Mojio Trips:
 ```
 try{
