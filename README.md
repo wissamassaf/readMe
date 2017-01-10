@@ -61,55 +61,69 @@ Once this is done, xee automatically calls back the ```mojio/getAccessToken``` s
 In order to use the connector, you need to import mojio module.
 
 Then create a new instance of the classes, defined in this module (we assume that we already otbained an access token for the given user) example:
+Mojio Trips:
 ```
-var config = require("../config");
-var clientModule = require("../client");
-var cm = new clientModule.Client({"username" : "test1"});
-//var http = require("http");
 try{
+  //1-requiring tripManager object
   var tripManager = require("../tripManager");
+  //2-creating a tripManager instance
   var tm = new tripManager.TripManager({"username":"test1"});
+  //3-using one of tripManager Apis by calling them as a function.
   return tm.getAllTrips();
-  var vehicleManager = require("../vehicleManager");
+  catch(exception) {
+  return exception;
+}
+```
+Mojio Vehicles:
+```
+try{
+  //1-requiring vehicleManager object
+  var tripManager = require("../tripManager");
+  //2-creating a vehicleManager instance
   var vm = new vehicleManager.VehicleManager({"username":"test1"});
+  //3-using one of vehicleManager Apis by calling them as a function.
   return vm.getAllVehicles();
-  var mojioManager = require("../mojioManager");
-  var mm = new mojioManager.MojioManager({"username":"test1"});
-  return mm.getAllMojios();
+  catch(exception) {
+  return exception;
+}
+```
+Mojio Users:
+```
+try{
+  //1-requiring userManager object
   var userManager = require("../userManager");
+  //2-creating a userManager instance
   var um = new userManager.UserManager({"username":"test1"});
-  return um.updateUserPhoneNumber("56a63a5c-bc75-4650-a9c0-b774342e7501","96176672736",{"sendVerification":"true","pin":"4431"});
-  return um.addPhoneNumber("56a63a5c-bc75-4650-a9c0-b774342e7501","96176672736");
-  return um.getUserEmails("56a63a5c-bc75-4650-a9c0-b774342e7501");
-  return um.updateUserEmail("56a63a5c-bc75-4650-a9c0-b774342e7501","wissam.m.assaf@gmail.com");
+  //3-using one of userManager Apis by calling them as a function.
+  var updateUserPhoneNumber = um.updateUserPhoneNumber("56a63a5c-bc75-4650-a9c0-b774342e7501","96176672736",{"sendVerification":"true","pin":"4431"});
   return um.getMyDetails();
+  catch(exception) {
+  return exception;
+}
+```
+Mojio Mojios:
+```
+try{
+  //1-requiring mojioManager object
+  var mojioManager = require("../mojioManager");
+  //2-creating a mojioManager instance
+  var um = new mojioManager.MojioManager({"username":"test1"});
+  //3-using one of mojioManager Apis by calling them as a function.
+  return mm.getAllMojios();
+  catch(exception) {
+  return exception;
+}
+```
+Mojio Geofences:
+```
+try{
+  //1-requiring geofenceManager object
   var geofenceManager = require("../geofenceManager");
+  //2-creating a geofenceManager instance
   var gm = new geofenceManager.GeofenceManager({"username":"test1"});
+  //3-using one of geofenceManager Apis by calling them as a function.
   return gm.deleteGeofence("5a21b91d-6ef8-4f88-b48b-86b1107359fb");
-  var updateParams = {"Name":"paramsTest"};
-  return gm.updateGeofence("5a21b91d-6ef8-4f88-b48b-86b1107359fb",updateParams);
-  return gm.getAllGeofences({"top":"1"})
-  var geofence = gm.getAllGeofences({"top":"1"}).Data[0];
-  return gm.getGeofence(geofence.Id)  
-  var createGeofenceParams = {
-  		"Name":"Test2",
-  		"Description":"Bla bla"
-  }
-  return gm.createGeofence(createGeofenceParams);
-  var appManager = require("../appManager");
-  var am = new appManager.AppManager({"username":"test1"});
-  return am.getApps(config.client_id)
-  var activityStreams = require("../activityStreams");
-  var myActivitySteams = new activityStreams.ActivityStreams({"username":"test1"});
-  var getActivitiesParams = {
-    "skip":0,
-    "since":"10-10-2000",
-    "top":"10",
-    "includeCount":"true"
-  }
-  return myActivitySteams.getActivities("Vehicles",getActivitiesParams) 
- }
-catch(exception) {
+  catch(exception) {
   return exception;
 }
 ```
