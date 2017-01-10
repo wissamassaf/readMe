@@ -1,8 +1,9 @@
 ## About Mojio
 
-[Mojio](https://www.moj.io/developer/) gives you access to a great deal of data about the driver and their vehicle to create apps and services to improve the end user experience.
+[Mojio](https://www.moj.io/developer/) is an on-board diagnostics service in which you access to a great deal of data about the driver and their vehicle to create apps and services to improve the end user experience.Mojio has an open platform that is completely scalable and hardware agnostic, Mojio provides all the elements needed to launch your connected car service. And Mojio has many Apis that are sufficient to control the users, their vehicles, and the vehicle trips.
 
-
+## Purpose of the scriptr.io connector for mojio
+The purpose of this connector is to simplify and streamline the way you access mojio's APIs from scriptr.io, by providing you with a few native objects that you can directly integrate into your own scripts.This will hopefully allow you to create sophisticated applications.
 
 ## Components
 
